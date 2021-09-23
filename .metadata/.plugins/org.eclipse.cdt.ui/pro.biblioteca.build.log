@@ -1,0 +1,89 @@
+16:44:03 **** Incremental Build of configuration Debug for project pro.biblioteca ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\pro.biblioteca.o" "..\\src\\pro.biblioteca.c" 
+..\src\pro.biblioteca.c: In function 'main':
+..\src\pro.biblioteca.c:28:10: warning: format '%d' expects argument of type 'int *', but argument 2 has type 'int' [-Wformat=]
+   28 |  scanf("%d",A);
+      |         ~^  ~
+      |          |  |
+      |          |  int
+      |          int *
+..\src\pro.biblioteca.c:32:10: warning: format '%d' expects argument of type 'int *', but argument 2 has type 'int' [-Wformat=]
+   32 |  scanf("%d",B);
+      |         ~^  ~
+      |          |  |
+      |          |  int
+      |          int *
+..\src\pro.biblioteca.c:36:10: warning: format '%c' expects argument of type 'char *', but argument 2 has type 'int' [-Wformat=]
+   36 |  scanf("%c", opcion);
+      |         ~^   ~~~~~~
+      |          |   |
+      |          |   int
+      |          char *
+..\src\pro.biblioteca.c:39:2: error: case label does not reduce to an integer constant
+   39 |  case "suma":
+      |  ^~~~
+..\src\pro.biblioteca.c:40:12: error: incompatible type for argument 3 of 'suma'
+   40 |   suma(A,B,resultado);
+      |            ^~~~~~~~~
+      |            |
+      |            float
+In file included from ..\src\pro.biblioteca.c:16:
+..\src\utn.h:12:46: note: expected 'float *' but argument is of type 'float'
+   12 | int suma(int operador1, int operador2,float* presultado);
+      |                                       ~~~~~~~^~~~~~~~~~
+..\src\pro.biblioteca.c:44:2: error: case label does not reduce to an integer constant
+   44 |  case "resta":
+      |  ^~~~
+..\src\pro.biblioteca.c:45:13: error: incompatible type for argument 3 of 'resta'
+   45 |   resta(A,B,resultado);
+      |             ^~~~~~~~~
+      |             |
+      |             float
+In file included from ..\src\pro.biblioteca.c:16:
+..\src\utn.h:13:48: note: expected 'float *' but argument is of type 'float'
+   13 | int resta(int operador1, int operador2, float* presultado);
+      |                                         ~~~~~~~^~~~~~~~~~
+..\src\pro.biblioteca.c:49:2: error: case label does not reduce to an integer constant
+   49 |  case "division":
+      |  ^~~~
+..\src\pro.biblioteca.c:50:3: warning: implicit declaration of function 'division' [-Wimplicit-function-declaration]
+   50 |   division(A,B,resultado);
+      |   ^~~~~~~~
+..\src\pro.biblioteca.c:56:2: error: case label does not reduce to an integer constant
+   56 |  case "multiplicacion" :
+      |  ^~~~
+..\src\pro.biblioteca.c:57:22: error: incompatible type for argument 3 of 'multiplicacion'
+   57 |   multiplicacion(A,B,resultado);
+      |                      ^~~~~~~~~
+      |                      |
+      |                      float
+In file included from ..\src\pro.biblioteca.c:16:
+..\src\utn.h:15:56: note: expected 'float *' but argument is of type 'float'
+   15 | int multiplicacion(int operador1, int operador2,float* presultado);
+      |                                                 ~~~~~~~^~~~~~~~~~
+..\src\pro.biblioteca.c:63:2: error: case label does not reduce to an integer constant
+   63 |  case "factorial":
+      |  ^~~~
+..\src\pro.biblioteca.c:64:15: warning: passing argument 2 of 'factorial' makes pointer from integer without a cast [-Wint-conversion]
+   64 |   factorial(A,B,resultado);
+      |               ^
+      |               |
+      |               int
+In file included from ..\src\pro.biblioteca.c:16:
+..\src\utn.h:16:36: note: expected 'float *' but argument is of type 'int'
+   16 | int factorial(int operador1,float* presultado);
+      |                             ~~~~~~~^~~~~~~~~~
+..\src\pro.biblioteca.c:64:3: error: too many arguments to function 'factorial'
+   64 |   factorial(A,B,resultado);
+      |   ^~~~~~~~~
+In file included from ..\src\pro.biblioteca.c:16:
+..\src\utn.h:16:5: note: declared here
+   16 | int factorial(int operador1,float* presultado);
+      |     ^~~~~~~~~
+..\src\pro.biblioteca.c:25:6: warning: unused variable 'estado' [-Wunused-variable]
+   25 |  int estado=0;
+      |      ^~~~~~
+
+16:44:03 Build Failed. 9 errors, 6 warnings. (took 882ms)
+

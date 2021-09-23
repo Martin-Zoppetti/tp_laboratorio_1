@@ -1,0 +1,61 @@
+/*
+ ============================================================================
+ Name        : pFunciones1.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ Ejercicio 1-1:
+Ingresar números enteros, hasta que el usuario lo decida. Calcular y mostrar:
+a) El promedio de los números positivos.
+b) El promedio de los números negativos.
+
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+float promedioP(int acumulador,int contador);
+
+
+int main(void) {
+	setbuf(stdout,NULL);
+int acumuladorPLUS=0;
+//int acumuladorMINUS=0;
+int contadorPLUS=0;
+int contadorMINUS=0;
+int numero;
+float resultadoP;
+//float resultadoM;
+
+
+
+while(numero!=666){
+printf("numero entero n");
+scanf("%d",&numero);
+if(numero<0){
+	//acumuladorMINUS=+numero;
+	contadorMINUS++;
+}
+else{
+	acumuladorPLUS=+numero;
+	contadorPLUS++;
+
+}
+
+}
+	resultadoP = promedioP(acumuladorPLUS,contadorPLUS);
+	printf("el promedio de numeros positivos es %f\n",resultadoP);
+	return 0;
+}
+
+
+float promedioP(int acumulador,int contador){
+	float resultado;
+	resultado= acumulador/contador;
+	return resultado;
+	}
+
+
+
+

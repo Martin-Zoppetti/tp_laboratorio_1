@@ -1,0 +1,12 @@
+LaunchTargetManager/configs/hola\ mundo.exe=org.eclipse.launchbar.core.launchTargetType.local\:Local
+LaunchTargetManager/configs/pFunciones1.exe=org.eclipse.launchbar.core.launchTargetType.local\:Local
+LaunchTargetManager/configs/pro.biblioteca.exe=org.eclipse.launchbar.core.launchTargetType.local\:Local
+LaunchTargetManager/configs/prueba\ 1.exe=org.eclipse.launchbar.core.launchTargetType.local\:Local
+LaunchTargetManager/configs/vid1-.exe=org.eclipse.launchbar.core.launchTargetType.local\:Local
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:hola mundo.exe,org.eclipse.launchbar.core.descriptorType.default\:vid1-.exe,org.eclipse.launchbar.core.descriptorType.default\:prueba1.exe,org.eclipse.launchbar.core.descriptorType.default\:prueba 1.exe,org.eclipse.launchbar.core.descriptorType.default\:pFunciones1.exe,org.eclipse.launchbar.core.descriptorType.default\:pro.biblioteca.exe,org.eclipse.launchbar.core.descriptorType.default\:tp_1.exe
+eclipse.preferences.version=1
+org.eclipse.launchbar.core.descriptorType.default\:hola\ mundo.exe/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:hola\ mundo.exe/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local

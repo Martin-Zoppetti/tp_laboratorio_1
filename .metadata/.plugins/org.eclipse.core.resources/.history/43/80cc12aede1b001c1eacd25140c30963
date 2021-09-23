@@ -1,0 +1,27 @@
+/*
+ ============================================================================
+1. Ingresar 1er operando (A=x)
+2. Ingresar 2do operando (B=y)
+3. Calcular todas las operaciones
+a) Calcular la suma (A+B)
+b) Calcular la resta (A-B)
+c) Calcular la division (A/B)
+d) Calcular la multiplicacion (A*B)
+e) Calcular el factorial (A!)
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "utn.h"
+
+
+int main(void) {
+	int A;
+	int B;
+	int Resultado;
+	utn_getNumero(int* pResultado,char* mensaje,char* mensajeError,int minimo,int maximo,int reintentos);
+	return EXIT_SUCCESS;
+}
+
+

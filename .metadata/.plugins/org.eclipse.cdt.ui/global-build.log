@@ -1,0 +1,46 @@
+17:21:13 **** Rebuild of configuration Debug for project tp_1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utn.o" "..\\src\\utn.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\tp_1.o" "..\\src\\tp_1.c" 
+gcc -o tp_1.exe "src\\tp_1.o" "src\\utn.o" 
+17:21:28 **** Incremental Build of configuration Debug for project tp_1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utn.o" "..\\src\\utn.c" 
+..\src\utn.c: In function 'utn_getNumero':
+..\src\utn.c:17:2: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+   17 |  if(num<=maximo && num>=minimo)
+      |  ^~
+..\src\utn.c:19:3: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+   19 |   printf(mensajeError);
+      |   ^~~~~~
+..\src\utn.c: In function 'dividir':
+..\src\utn.c:46:6: warning: variable 'estado' set but not used [-Wunused-but-set-variable]
+   46 |  int estado=0;
+      |      ^~~~~~
+..\src\utn.c: At top level:
+..\src\utn.c:63:2: error: expected identifier or '(' before 'return'
+   63 |  return estado;
+      |  ^~~~~~
+..\src\utn.c:65:1: error: expected identifier or '(' before '}' token
+   65 | }
+      | ^
+..\src\utn.c: In function 'factorial':
+..\src\utn.c:74:6: error: 'i' undeclared (first use in this function)
+   74 |  for(i=operador1, i>=0, i--){
+      |      ^
+..\src\utn.c:74:6: note: each undeclared identifier is reported only once for each function it appears in
+..\src\utn.c:74:17: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+   74 |  for(i=operador1, i>=0, i--){
+      |                 ^
+..\src\utn.c:74:23: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+   74 |  for(i=operador1, i>=0, i--){
+      |                       ^
+..\src\utn.c:74:28: error: expected ';' before ')' token
+   74 |  for(i=operador1, i>=0, i--){
+      |                            ^
+      |                            ;
+..\src\utn.c:74:28: error: expected expression before ')' token
+..\src\utn.c: In function 'dividir':
+..\src\utn.c:60:2: warning: control reaches end of non-void function [-Wreturn-type]
+   60 |  }
+      |  ^
