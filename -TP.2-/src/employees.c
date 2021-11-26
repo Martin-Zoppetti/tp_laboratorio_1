@@ -10,11 +10,11 @@ int initEmployees(Employee* list, int len) {
 	int retorno=-1;
 
 
-		for (int i=0; i<len; i++)
-		{
-			list[i].isEmpty=0;
-			retorno=0;
-		}
+	for (int i=0; i<len; i++)
+	{
+		list[i].isEmpty=0;
+		retorno=0;
+	}
 
 
 	return retorno;
@@ -60,7 +60,6 @@ int removeEmployee(Employee* list, int len, int id)
 		strcpy(list[id].lastName,auxNULL);
 		list[id].salary = auxInt;
 		list[id].sector = auxInt;
-		list[id].isEmpty = 0;
 		retorno =0;
 	}
 

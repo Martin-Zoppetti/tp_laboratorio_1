@@ -25,18 +25,18 @@ int altaEmpleado(Employee* list, int len){
 	int sector;
 	if(generadorDeId(list, len)!=-1){
 		auxId=generadorDeId(list, len);
-UTN_ingresoTextoReintentos(name,tam , "Escriba el nombre del empleado: \n", "Error, ingreso un nombre incorrecto.\n", reintentos);
-UTN_ingresoTextoReintentos(lastName, tam, "Escriba el apellido del empleado: \n", "Error, ingreso un apellido incorrecto. \n", reintentos);
-UTN_ingresoFloatReintentos(&salary,  "Escriba el  salario del empleado: \n", "Error, ingreso un salario incorrecto.\n" , reintentos);
-UTN_ingresoIntReintentos(&sector, "Escriba el sector del empleado: \n",  "Error, ingreso un sector incorrecto.\n", reintentos);
+		UTN_ingresoTextoReintentos(name,tam , "Escriba el nombre del empleado: \n", "Error, ingreso un nombre incorrecto.\n", reintentos);
+		UTN_ingresoTextoReintentos(lastName, tam, "Escriba el apellido del empleado: \n", "Error, ingreso un apellido incorrecto. \n", reintentos);
+		UTN_ingresoFloatReintentosMinMax(&salary,  "Escriba el  salario del empleado: \n", "Error, ingreso un salario incorrecto.\n" , 0, 12000000000, reintentos);
+		UTN_ingresoIntReintentos(&sector, "Escriba el sector del empleado: \n",  "Error, ingreso un sector incorrecto.\n", reintentos);
 
 
 
 
 		addEmployee(list, len, auxId, name, lastName, salary, sector);
-printEmployee(list, len, auxId);
+		printEmployee(list, len, auxId);
 		retorno=0;
-
+printEmployees(list, len);
 	}
 	else{
 		printf("No hay espacio disponible para integrar un nuevo empleado, debe eliminar un empleado para poder ingresar uno nuevo.");
@@ -82,14 +82,14 @@ void menuMod(Employee* list, int len,int id){
 	switch (respuesta) {
 	case 1:
 		printf("Escriba el nuevo nombre: \n");
-			scanf("%s",auxString);
-			strcpy(list[id].name,auxString);
+		scanf("%s",auxString);
+		strcpy(list[id].name,auxString);
 
 		break;
 	case 2:
 		printf("Escriba el nuevo apellido: \n");
-			scanf("%s",auxString);
-			strcpy(list[id].lastName,auxString);
+		scanf("%s",auxString);
+		strcpy(list[id].lastName,auxString);
 		break;
 	case 3:
 		printf("Escriba el nuevo sector: \n");
@@ -105,6 +105,7 @@ void menuMod(Employee* list, int len,int id){
 
 
 	printf("Modificacion exitosa! \n Volviendo a menu principal");
+	printEmployee(list, len, id);
 }
 
 
@@ -114,10 +115,10 @@ void printListaEmployees(Employee* list, int len){
 	printf("Lista de empleados registrados \n");
 	for(int i=0; i<len; i++){
 		if(list[i].isEmpty==1 ){
-		printEmployee(list, len, i);
+			printEmployee(list, len, i);
 
+		}
 	}
-}
 }
 
 
@@ -133,6 +134,7 @@ int bajaEmpleado(Employee* list, int len){
 	{
 		removeEmployee(list, len, auxId);
 		retorno=0;
+		printf("Baja exitosa!\n");
 	}
 
 	return retorno;
@@ -148,17 +150,17 @@ int informes(Employee* list, int len){
 	scanf("%d",&respuesta);
 	printf("Opciones: \n");
 	switch (respuesta) {
-		case 1:
-			printf("  Si desea el listado alfabeticamente descendente, ingrese 0\n  Si desea el listado alfabeticamente ascendente, ingrese 1 \n");
-			scanf("%d",&opcion);
-			sortEmployees(list, len, opcion);
-			printListaEmployees(list, len);
-			break;
-		case 2:
-			presentacionSalarial(list, len);
-			break;
-		default:
-			break;
+	case 1:
+		printf("  Si desea el listado alfabeticamente descendente, ingrese 0\n  Si desea el listado alfabeticamente ascendente, ingrese 1 \n");
+		scanf("%d",&opcion);
+		sortEmployees(list, len, opcion);
+		printListaEmployees(list, len);
+		break;
+	case 2:
+		presentacionSalarial(list, len);
+		break;
+	default:
+		break;
 	}
 
 
