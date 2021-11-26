@@ -1,12 +1,13 @@
 /*
- * tp2.gets.c
+ * ingresos.c
  *
- *  Created on: 16 oct. 2021
+ *  Created on: 17 oct. 2021
  *      Author: MariaElena
  */
 
+#ifndef INGRESOS_C_
+#define INGRESOS_C_
 
-///////////////////////////////////////////////////////////
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,16 +18,16 @@
 #define FALSO 0
 #define TAM_BUFFER 1000
 
-int myGets(char* pputs, int len)
+int myGets(char* pIngreso, int len)
 {
 	int retorno= FALSO;
 	int indexFinal;
-	if(fgets(pputs,len,stdin)!=NULL)
+	if(fgets(pIngreso,len,stdin)!=NULL)
 	{
-		indexFinal = strlen(pputs)-1;
-		if(pputs[indexFinal] == '\n')
+		indexFinal = strlen(pIngreso)-1;
+		if(pIngreso[indexFinal] == '\n')
 		{
-			pputs[indexFinal] = '\0';
+			pIngreso[indexFinal] = '\0';
 		}
 		retorno = VERDADERO;
 	}
@@ -35,13 +36,13 @@ int myGets(char* pputs, int len)
 
 // VALIDACIONES
 
-int validarNumeroEnteroIngresado(char* pputs){
+int validarNumeroEnteroIngresado(char* pIngreso){
 	int retorno = VERDADERO;
-	if(strlen(pputs) > 0){
-		for(int i = 0;i< strlen(pputs);i++){
-			if(isdigit(pputs[i]) == FALSO){
+	if(strlen(pIngreso) > 0){
+		for(int i = 0;i< strlen(pIngreso);i++){
+			if(isdigit(pIngreso[i]) == FALSO){
 				if(i == 0){
-					if(pputs[0] != '-'){
+					if(pIngreso[0] != '-'){
 						retorno = FALSO;
 						break;
 					}
@@ -56,17 +57,17 @@ int validarNumeroEnteroIngresado(char* pputs){
 	return retorno;
 }
 
-int validarNumeroFlotanteIngresado(char* pputs){
+int validarNumeroFlotanteIngresado(char* pIngreso){
 	int contadorDeSignos = 0;
 	int retorno = VERDADERO;
-	if(strlen(pputs) > 0){
-		for(int i = 0;i < strlen(pputs); i++){
-			if(pputs[i] == '.' || pputs[i] == ','){
+	if(strlen(pIngreso) > 0){
+		for(int i = 0;i < strlen(pIngreso); i++){
+			if(pIngreso[i] == '.' || pIngreso[i] == ','){
 				contadorDeSignos++;
 			}else{
-				if(isdigit(pputs[i]) == 0){
+				if(isdigit(pIngreso[i]) == 0){
 					if(i == 0){
-						if(pputs[0] != '-'){
+						if(pIngreso[0] != '-'){
 							retorno = FALSO;
 							break;
 						}
@@ -86,19 +87,19 @@ int validarNumeroFlotanteIngresado(char* pputs){
 	return retorno;
 }
 
-int validarCaracterIngresado(char puts){
+int validarCaracterIngresado(char ingreso){
 	int retorno = VERDADERO;
-	if(isalpha(puts) == FALSO){
+	if(isalpha(ingreso) == FALSO){
 		retorno = FALSO;
 	}
 	return retorno;
 }
 
-int validarCadenaAlfabeticaIngresada(char puts[]){
+int validarCadenaAlfabeticaIngresada(char ingreso[]){
 	int retorno = VERDADERO;
-	if(strlen(puts) > 0){
-		for(int i = 0;i<strlen(puts);i++){
-			if(isalpha(puts[i] == 0)){
+	if(strlen(ingreso) > 0){
+		for(int i = 0;i<strlen(ingreso);i++){
+			if(isalpha(ingreso[i] == 0)){
 				retorno = FALSO;
 				break;
 			}
@@ -111,9 +112,9 @@ int validarCadenaAlfabeticaIngresada(char puts[]){
 
 // FIN VALIDACIONES
 
-// putsS INT
+// INGRESOS INT
 
-int UTN_putsInt(char* variableTexto, char* textoError)
+int UTN_ingresoInt(char* variableTexto, char* textoError)
 {
 	char buffer[TAM_BUFFER];
 	int retorno;
@@ -132,11 +133,11 @@ int UTN_putsInt(char* variableTexto, char* textoError)
 	return retorno;
 }
 
-int UTN_putsIntReintentos(int* pputs, char* variableTexto, char* textoError, int reintentos)
+int UTN_ingresoIntReintentos(int* pIngreso, char* variableTexto, char* textoError, int reintentos)
 {
 	char buffer[TAM_BUFFER];
 	int retorno;
-	if(pputs != NULL && variableTexto != NULL && textoError != NULL && reintentos > 0)
+	if(pIngreso != NULL && variableTexto != NULL && textoError != NULL && reintentos > 0)
 	{
 		printf("%s",variableTexto);
 		fflush(stdin);
@@ -152,17 +153,17 @@ int UTN_putsIntReintentos(int* pputs, char* variableTexto, char* textoError, int
 			gets(buffer);
 			reintentos--;
 		}
-		*pputs = atoi(buffer);
+		*pIngreso = atoi(buffer);
 		retorno = VERDADERO;
 	}
 	return retorno;
 }
 
-int UTN_putsIntReintentosMinMax(int* pputs, char* variableTexto, char* textoError, int min, int max, int reintentos)
+int UTN_ingresoIntReintentosMinMax(int* pIngreso, char* variableTexto, char* textoError, int min, int max, int reintentos)
 {
 	char buffer[TAM_BUFFER];
 	int retorno = FALSO;
-	if(pputs != NULL && variableTexto != NULL && textoError != NULL && reintentos > 0 && min < max)
+	if(pIngreso != NULL && variableTexto != NULL && textoError != NULL && reintentos > 0 && min < max)
 	{
 		printf("%s",variableTexto);
 		fflush(stdin);
@@ -179,17 +180,17 @@ int UTN_putsIntReintentosMinMax(int* pputs, char* variableTexto, char* textoErro
 			reintentos--;
 
 		}
-		*pputs = atoi(buffer);
+		*pIngreso = atoi(buffer);
 		retorno = VERDADERO;
 	}
 	return retorno;
 }
 
-// FIN putsS INT
+// FIN INGRESOS INT
 
-// putsS FLOAT
+// INGRESOS FLOAT
 
-float UTN_putsFloat(char* variableTexto, char* textoError){
+float UTN_ingresoFloat(char* variableTexto, char* textoError){
 	char buffer[TAM_BUFFER];
 	float retorno;
 	if(variableTexto != NULL && textoError != NULL){
@@ -206,10 +207,10 @@ float UTN_putsFloat(char* variableTexto, char* textoError){
 	return retorno;
 }
 
-float UTN_putsFloatReintentos(float* pputs, char* variableTexto, char* textoError, int reintentos){
+float UTN_ingresoFloatReintentos(float* pIngreso, char* variableTexto, char* textoError, int reintentos){
 	char buffer[TAM_BUFFER];
 	int retorno;
-	if(pputs != NULL && variableTexto != NULL && textoError != NULL && reintentos > 0)
+	if(pIngreso != NULL && variableTexto != NULL && textoError != NULL && reintentos > 0)
 	{
 		printf("%s",variableTexto);
 		fflush(stdin);
@@ -225,16 +226,16 @@ float UTN_putsFloatReintentos(float* pputs, char* variableTexto, char* textoErro
 			gets(buffer);
 			reintentos--;
 		}
-		*pputs = atof(buffer);
+		*pIngreso = atof(buffer);
 		retorno = VERDADERO;
 	}
 	return retorno;
 }
 
-float UTN_putsFloatReintentosMinMax(float* pputs, char* variableTexto, char* textoError, float min, float max,int reintentos){
+float UTN_ingresoFloatReintentosMinMax(float* pIngreso, char* variableTexto, char* textoError, float min, float max,int reintentos){
 	char buffer[TAM_BUFFER];
 	int retorno;
-	if(pputs != NULL && variableTexto != NULL && textoError != NULL && reintentos > 0 && min < max)
+	if(pIngreso != NULL && variableTexto != NULL && textoError != NULL && reintentos > 0 && min < max)
 	{
 		printf("%s",variableTexto);
 		fflush(stdin);
@@ -250,17 +251,17 @@ float UTN_putsFloatReintentosMinMax(float* pputs, char* variableTexto, char* tex
 			gets(buffer);
 			reintentos--;
 		}
-		*pputs = atof(buffer);
+		*pIngreso = atof(buffer);
 		retorno = VERDADERO;
 	}
 	return retorno;
 }
 
-// FIN putsS FLOAT
+// FIN INGRESOS FLOAT
 
-// INICIO puts CHAR
+// INICIO INGRESO CHAR
 
-char UTN_putsChar(char* variableTexto, char* textoError){
+char UTN_ingresoChar(char* variableTexto, char* textoError){
 	char buffer;
 	char retorno;
 	if(variableTexto != NULL && textoError != NULL){
@@ -277,7 +278,7 @@ char UTN_putsChar(char* variableTexto, char* textoError){
 	return retorno;
 }
 
-char UTN_putsCharReintentos(char* pputs,char* variableTexto, char* textoError,int reintentos){
+char UTN_ingresoCharReintentos(char* pIngreso,char* variableTexto, char* textoError,int reintentos){
 	char buffer;
 	char retorno;
 	if(variableTexto != NULL && textoError != NULL && reintentos > 0){
@@ -295,13 +296,13 @@ char UTN_putsCharReintentos(char* pputs,char* variableTexto, char* textoError,in
 			buffer = getchar();
 			reintentos--;
 		}
-		*pputs = buffer;
+		*pIngreso = buffer;
 		retorno = VERDADERO;
 	}
 	return retorno;
 }
 
-char UTN_putsCharReintentosMinMax(char* pputs,char* variableTexto, char* textoError, char min, char max, int reintentos){
+char UTN_ingresoCharReintentosMinMax(char* pIngreso,char* variableTexto, char* textoError, char min, char max, int reintentos){
 	char buffer;
 	char retorno;
 	if(variableTexto != NULL && textoError != NULL && reintentos > 0 && min < max){
@@ -319,18 +320,18 @@ char UTN_putsCharReintentosMinMax(char* pputs,char* variableTexto, char* textoEr
 			buffer = getchar();
 			reintentos--;
 		}
-		*pputs = buffer;
+		*pIngreso = buffer;
 		retorno = VERDADERO;
 	}
 	return retorno;
 }
 
-char UTN_putsTextoReintentos(char pputs[],int tam, char* variableTexto, char* textoError,int reintentos){
+char UTN_ingresoTextoReintentos(char pIngreso[],int tam, char* variableTexto, char* textoError,int reintentos){
 	char retorno = VERDADERO;
 	if(variableTexto != NULL && textoError != NULL){
 		printf("%s",variableTexto);
 		fflush(stdin);
-		while(myGets(pputs,tam) == FALSO){
+		while(myGets(pIngreso,tam) == FALSO){
 			if(reintentos == 0){
 				retorno = FALSO;
 				break;
@@ -343,3 +344,6 @@ char UTN_putsTextoReintentos(char pputs[],int tam, char* variableTexto, char* te
 	}
 	return retorno;
 }
+
+
+#endif /* INGRESOS_C_ */
