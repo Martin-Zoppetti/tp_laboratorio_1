@@ -31,9 +31,9 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 	Employee* this = NULL;
 	this= employee_new();
 	Employee* retornoAuxEmployee;
-	if(idStr != NULL && nombreStr != NULL && horasTrabajadasStr != NULL && sueldoStr != NULL)
+	if(this!=NULL)
 	{
-		if(this!=NULL && idStr!=NULL && nombreStr!=NULL && horasTrabajadasStr!=NULL)
+		if(idStr != NULL && nombreStr != NULL && horasTrabajadasStr != NULL && sueldoStr != NULL)
 		{
 			auxID = atoi(idStr);
 			auxHorasTrabajadas = atoi(horasTrabajadasStr);

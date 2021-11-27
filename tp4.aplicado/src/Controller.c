@@ -1,6 +1,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -54,7 +55,8 @@ int compareEmployees(Employee* pFirstEmployee,Employee* pSecondEmployee,int orde
 	return retornoSwap;
 }
 
-/** \brief La función se encarga de contar la cantidad de datos en los archivos para llevar un control de cual es la última ID registrada.
+/** \brief La función se encarga de contar la cantidad de datos
+ *  en los archivos para llevar un control de cual es la última ID registrada.
  *
  * \param pArrayListEmployee lista de punteros
  * \return int Devuelve el contador de datos registrados en el archivo.
@@ -70,7 +72,7 @@ int controller_dataCount(LinkedList* pArrayListEmployee)
 	char horas[256];
 	char sueldo[256];
 	if(pArrayListEmployee != NULL){
-		fscanf(file,"%[^,],%[^,],%[^,],%[^\n]\n",id,nombre,horas,sueldo); // salteo la 1era
+		fscanf(file,"%[^,],%[^,],%[^,],%[^\n]\n",id,nombre,horas,sueldo);
 		do{
 			if(fscanf(file,"%[^,],%[^,],%[^,],%[^\n]\n",id,nombre,horas,sueldo)==4)
 			{
@@ -308,13 +310,15 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
 	int retorno = FALSE;
-	int bajaID;
 	int maximoEmpleadosCargados;
-	int indiceBaja;
+	int IndexEmpleadoBaja;
+	int bajaID;
+	int ExitAux=0;
 	maximoEmpleadosCargados = controller_dataCount(pArrayListEmployee);
 	Employee* employeeDown;
 	if(pArrayListEmployee != NULL)
 	{
+		printf("\n-------------------------Baja de empleado-------------------------\n\n");
 		if(UTN_ingresoIntReintentosMinMax(&bajaID,
 				"Escriba la ID del empleado del que desea dar de baja:",
 				"ERROR, el valor ingresado es incorrecto, reescriba: ",
@@ -322,16 +326,25 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 				maximoEmpleadosCargados,
 				Reintentos) == TRUE)
 		{
-			indiceBaja = employee_findById(pArrayListEmployee, bajaID);
-			if(indiceBaja != -1)
+			IndexEmpleadoBaja = employee_findById(pArrayListEmployee, bajaID);
+			if(IndexEmpleadoBaja != -1)
 			{
-				employeeDown = ll_get(pArrayListEmployee,indiceBaja);
+
+				employeeDown = ll_get(pArrayListEmployee,IndexEmpleadoBaja);
 				if(employeeDown != NULL)
 				{
+					UTN_ingresoIntReintentosMinMax(&ExitAux,
+							"Se logro encontrar al empleado requerido.\n Si esta seguro de su baja ingrese 1, de lo contrario ingrese 0\n"
+							, "Error al seleccionar la opcion, vuelva a intentarlo", 0, 1, Reintentos);
+
+					if(ExitAux==1){
 					free(employeeDown);
-					ll_remove(pArrayListEmployee,indiceBaja);
+					ll_remove(pArrayListEmployee,IndexEmpleadoBaja);
 					puts("¡Operacion exitosa!\n");
-					retorno = TRUE;
+					retorno = TRUE;}
+					else{
+						printf("Se cancela la baja del empleado, retorna al menu principal\n");
+					}
 				}
 				else{
 					puts("Error en la busqueda del empleado, vuelva al menú e intentelo nuevamente.\n");
@@ -392,7 +405,7 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
 	Employee* pEmpleadoAuxiliarTres;
 	int flagSwap;
 	int tamanoLista;
-	int retorno = FALSE;
+	int retorno = 0;
 	int respuestaUsuario;
 	int estadoRespuestaUsuario;
 	tamanoLista = ll_len(pArrayListEmployee);
@@ -414,7 +427,7 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
 						pEmpleadoAuxiliarTres = pEmpleadoAuxiliar;
 						ll_set(pArrayListEmployee, i, pEmpleadoAuxiliarDos);
 						ll_set(pArrayListEmployee, i+1, pEmpleadoAuxiliarTres);
-						retorno = TRUE;
+						retorno = 1;
 					}
 				}
 			}while(flagSwap == TRUE);
@@ -486,6 +499,34 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 		}
 	}
 	fclose(file);
+	return retorno;
+}
+
+/** \brief GENERA UNA LISTA DE LOS ID Y LOS NOMBRE COMPLETOS DE LOS EMPLEADOS PARA REALIZAR UN MEJOR SEGUIMIENTO DE LA MODIFICACION
+ *
+ * \param path char*
+ * \param pArrayListEmployee LinkedList*
+ * \return int
+ *
+ */
+int controller_ListAuxEmployee(LinkedList* pArrayListEmployee)
+{
+	int retorno = FALSE;
+	int tamanoLista;
+	if(pArrayListEmployee != NULL)
+	{
+		tamanoLista = ll_len(pArrayListEmployee);
+		printf("----------------Lista Auxiliar----------------\n");
+		for(int i = 0;i<tamanoLista;i++)
+		{
+			Employee* pAuxiliarEmpleado = ll_get(pArrayListEmployee,i);
+			printf("-----------------------------------\n");
+			printf("ID empleado: %d\n",pAuxiliarEmpleado->id);
+			printf("Nombre: %s\n",pAuxiliarEmpleado->nombre);
+			puts("----------------------\n");
+			retorno = TRUE;
+		}
+	}
 	return retorno;
 }
 

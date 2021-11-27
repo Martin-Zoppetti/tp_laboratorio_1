@@ -33,9 +33,11 @@ int main(){
 	int respuestaUsuario;
 	int banderaCargaDatosTexto = FALSE;
 	int banderaCargaDatosBinario = FALSE;
+	printf("--------------Bienvenido al menú--------------\n");
+
 	do{
 		puts("----------------------------------------------------------------------------------\n");
-		printf("Bienvenido al menú, seleccione una de las siguientes opciones:\n");
+		printf("Seleccione una de las siguientes opciones:\n");
 		puts("\t1 - Cargar los datos de los empleados desde el archivo data.csv (modo texto).");
 		puts("\t2 - Cargar los datos de los empleados desde el archivo data.txt (modo binario).");
 		puts("\t3 - Alta de empleados");
@@ -46,7 +48,7 @@ int main(){
 		puts("\t8 - Guardar los datos de los empleados en el archivo data.csv (modo texto)");
 		puts("\t9 - Guardar los datos de los empleados en el archivo data.txt (modo binario)");
 		puts("\t10 - Salir del programa");
-		UTN_ingresoIntReintentosMinMax(&respuestaUsuario,"Escriba una opción del menu: ","ERROR, el valor ingresado es incorrecto, reescriba correctamente: ",opcionMinima,opcionMaxima,Reintentos);
+		UTN_ingresoIntReintentosMinMax(&respuestaUsuario,"Escriba una opción del menu: ","ERROR, el valor ingresado es incorrecto, reescriba: ",opcionMinima,opcionMaxima,Reintentos);
 		switch(respuestaUsuario) {
 		case 1:
 			if(controller_loadFromText("data.csv", listaEmpleados) == TRUE)
@@ -73,6 +75,7 @@ int main(){
 		case 4:
 			if(banderaCargaDatosTexto == TRUE || banderaCargaDatosBinario == TRUE)
 			{
+				controller_ListAuxEmployee(listaEmpleados);
 				controller_editEmployee(listaEmpleados);
 			}
 			else{
